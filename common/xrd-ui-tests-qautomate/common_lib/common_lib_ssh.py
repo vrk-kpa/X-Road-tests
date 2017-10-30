@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
+from variables import strings, errors
 from webframework import TESTDATA
 import subprocess
 import os
-from variables import strings, errors
 from selenium.webdriver.common.by import By
 from webframework.extension.util.common_utils import *
 from webframework.extension.config import get_config_value
@@ -14,7 +14,8 @@ class Common_lib_ssh(CommonUtils):
     Common library for ssh or lxd connection handeling
 
     Changelog:
-
+    * 19.10.2017
+        | Ssh methods added for file manipulation
     * 11.07.2017
         | Documentation updated
     """
@@ -25,7 +26,6 @@ class Common_lib_ssh(CommonUtils):
 
         *Updated: 11.07.2017*
 
-        :param parameters:  Test data section dictionary
         """
         CommonUtils.__init__(self)
         self.log_file_output = ""
@@ -113,6 +113,66 @@ class Common_lib_ssh(CommonUtils):
         for log_file in strings.ss_all_logs:
             command = formated_command.format(server, log_file, log_file.split("/")[-1])
             self.run_bash_command(command, True)
+
+    def delete_files_from_directory(self, section="cs_url", path=u'/var/lib/xroad/backup'):
+        """
+        :param section:  Test data section name
+        """
+        server = TESTDATA[section][u'server_address']
+        if strings.server_environment_type() == strings.lxd_type_environment:
+            server = server.split(".lxd")[0]
+            command = "lxc exec {} -- sudo rm -rf {}".format(server, path)
+        elif strings.server_environment_type() == strings.ssh_type_environment:
+            command = "ssh {} sudo rm -rf {}".format(server, path)
+        else:
+            raise Exception(errors.enviroment_type_not_valid)
+
+        self.run_bash_command(command, True)
+
+    def generate_empty_file(self, section, path):
+        """
+        :param section:  Test data section name
+        """
+        server = TESTDATA[section][u'server_address']
+        if strings.server_environment_type() == strings.lxd_type_environment:
+            server = server.split(".lxd")[0]
+            command = "lxc exec {} -- sudo touch {}".format(server, path)
+        elif strings.server_environment_type() == strings.ssh_type_environment:
+            command = "ssh {} sudo touch {}".format(server, path)
+        else:
+            raise Exception(errors.enviroment_type_not_valid)
+
+        self.run_bash_command(command, True)
+
+    def change_file_permission(self, section, path, permission):
+        """
+        :param section:  Test data section name
+        """
+        server = TESTDATA[section][u'server_address']
+        if strings.server_environment_type() == strings.lxd_type_environment:
+            server = server.split(".lxd")[0]
+            command = "lxc exec {} -- sudo chmod {} {}".format(server, permission, path)
+        elif strings.server_environment_type() == strings.ssh_type_environment:
+            command = "ssh {} sudo chmod {} {}".format(server, permission, path)
+        else:
+            raise Exception(errors.enviroment_type_not_valid)
+
+        self.run_bash_command(command, True)
+
+    def move_file(self, section, move_from, move_to):
+        """
+        :param section:  Test data section name
+        """
+        server = TESTDATA[section][u'server_address']
+        if strings.server_environment_type() == strings.lxd_type_environment:
+            server = server.split(".lxd")[0]
+            command = "lxc exec {} -- sudo mv {} {}".format(server, move_from, move_to)
+        elif strings.server_environment_type() == strings.ssh_type_environment:
+            command = "ssh {} sudo touch {} {}".format(server, move_from, move_to)
+        else:
+            raise Exception(errors.enviroment_type_not_valid)
+
+        self.run_bash_command(command, True)
 
     def run_bash_command(self, command, to_print=True):
         """

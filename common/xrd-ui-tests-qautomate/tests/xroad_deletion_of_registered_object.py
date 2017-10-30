@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from webframework import TESTDATA
 from variables import strings
+from webframework import TESTDATA
 from webframework.extension.base.baseTest import BaseTest
 from webframework.extension.parsers.parameter_parser import get_all_parameters
 from webframework.extension.util.common_utils import *
@@ -20,15 +20,16 @@ from common_lib.component_ss_keys_and_certs import Component_ss_keys_and_certs
 from common_lib.component_cs_conf_mgm import Component_cs_conf_mgm
 from common_lib.component_ss_clients import Component_ss_clients
 from pagemodel.ss_clients import Ss_clients
+from pagemodel.ss_login import Ss_login
+from pagemodel.cs_login import Cs_login
 
 class Xroad_deletion_of_registered_object(BaseTest):
     """
     Xroad cases for deleting registered objects
 
     **Changelog:**
-
-    * 11.07.2017
-        | Documentation updated
+        * 11.07.2017
+            | Documentation updated
     """
     common_utils = CommonUtils()
     component_cs_sidebar = Component_cs_sidebar()
@@ -46,6 +47,8 @@ class Xroad_deletion_of_registered_object(BaseTest):
     component_cs_conf_mgm = Component_cs_conf_mgm()
     component_ss_clients = Component_ss_clients()
     ss_clients = Ss_clients()
+    cs_login = Cs_login()
+    ss_login = Ss_login()
 
     @classmethod
     def setUpTestSet(self):
@@ -90,7 +93,7 @@ class Xroad_deletion_of_registered_object(BaseTest):
 
         **Test steps:**
             * **Step 1: restore central server backup in central server**
-                * :func:`~webframework.extension.util.common_utils.CommonUtils.open_url`, *self.parameters[u'cs_url']['url']*
+                * :func:`~webframework.extension.util.common_utils.CommonUtils.open_url`, *TESTDATA[u'cs_url']['url']*
                 * :func:`~common_lib.component_cs_sidebar.Component_cs_sidebar.open_backup_restore_view`
                 * :func:`~common_lib.component_cs_backup.Component_cs_backup.restore_backup`
                 * :func:`~common_lib.component_cs_sidebar.Component_cs_sidebar.open_global_configuration_view`
@@ -102,10 +105,10 @@ class Xroad_deletion_of_registered_object(BaseTest):
                 * :func:`~common_lib.component_cs_sidebar.Component_cs_sidebar.open_security_servers_view`
                 * :func:`~common_lib.component_cs_sec_servers.Component_cs_sec_servers.verify_servers_does_contain_server`, *u'member1_configuration'*, *u'member_name'*
             * **Step 4: log out from central server**
-                * :func:`~webframework.extension.util.common_utils.CommonUtils.open_url`, *self.parameters[u'cs_url']['url']*
+                * :func:`~webframework.extension.util.common_utils.CommonUtils.open_url`, *TESTDATA[u'cs_url']['url']*
                 * :func:`~common_lib.common_lib.Common_lib.log_out`
             * **Step 5: restore security server in security server**
-                * :func:`~webframework.extension.util.common_utils.CommonUtils.open_url`, *self.parameters[u'ss1_url']['url']*
+                * :func:`~webframework.extension.util.common_utils.CommonUtils.open_url`, *TESTDATA[u'ss1_url']['url']*
                 * :func:`~common_lib.component_ss_sidebar.Component_ss_sidebar.open_backup_restore_view`
                 * :func:`~common_lib.component_ss_backup.Component_ss_backup.restore_backup`
                 * :func:`~common_lib.component_ss_sidebar.Component_ss_sidebar.open_keys_and_certs_view`
@@ -114,10 +117,9 @@ class Xroad_deletion_of_registered_object(BaseTest):
                 * :func:`~common_lib.component_ss_sidebar.Component_ss_sidebar.open_security_servers_client_view`
                 * :func:`~common_lib.component_cs_sec_servers.Component_cs_sec_servers.verify_table_contains_subsystem`, *u'member1_configuration'*
             * **Step 7: log out from security**
-                * :func:`~webframework.extension.util.common_utils.CommonUtils.open_url`, *self.parameters[u'ss1_url']['url']*
+                * :func:`~webframework.extension.util.common_utils.CommonUtils.open_url`, *TESTDATA[u'ss1_url']['url']*
                 * :func:`~common_lib.common_lib.Common_lib.log_out`
         """
-        print("tearDown")
         stop_log_time = self.common_lib.get_log_utc_time()
         if not self.is_last_test_passed():
             _, copy_log = self.get_log_file_paths()
@@ -126,64 +128,33 @@ class Xroad_deletion_of_registered_object(BaseTest):
             self.common_lib_ssh.get_all_logs_from_server(u'cs_url')
             self.common_lib_ssh.find_exception_from_logs_and_save(self.start_log_time, stop_log_time, u'cs_url', copy_log)
 
-        error = ""
-
+        # Step Restore central server backup in central server if needed
         if self.restore_cs:
             print("tearDown_restore_cs")
-            try:
-                # Step Restore central server backup in central server
-                self.common_utils.open_url(TESTDATA[u'cs_url']['url'])
-                self.component_cs_sidebar.open_backup_restore_view()
-                self.component_cs_backup.restore_backup()
-                self.component_cs_sidebar.open_global_configuration_view()
-
-                try:
-                    self.component_cs_conf_mgm.insert_pin_from_login_button(u'cs_url')
-                except:
-                    print("Pin not needed?")
-
-                # Step Verify member found in members table in central server
-                self.component_cs_sidebar.open_members_view()
-                self.component_cs_members.verify_members_does_contain_member(u'member1_configuration', u'member_name')
-
-                # Step Verify client found in central server
-                self.component_cs_sidebar.open_security_servers_view()
-                self.component_cs_sec_servers.verify_servers_does_contain_server(u'member1_configuration', u'member_name')
-            except Exception as e:
-                error = "\n" + str(e)
-                print(error)
-
-            # Step Log out from central server
             self.common_utils.open_url(TESTDATA[u'cs_url']['url'])
-            self.common_lib.log_out()
+            self.component_cs_sidebar.open_backup_restore_view()
+            self.component_cs_backup.restore_backup()
 
+        # Step Restore security server in security server if needed
         if self.restore_ss:
             print("tearDown_restore_ss")
-            try:
-                # Step Restore security server in security server
-                self.common_utils.open_url(TESTDATA[u'ss1_url']['url'])
-                self.component_ss_sidebar.open_backup_restore_view()
-                self.component_ss_backup.restore_backup()
-                # For some reason jquery takes too long
-                sleep(35)
-
-                self.component_ss_sidebar.open_keys_and_certs_view()
-                self.component_ss_keys_and_certs.active_token_and_insert_pin_code_if_needed(u'ss1_url')
-
-                # Step Verify security serve subsystem in security server
-                self.component_ss_sidebar.open_security_servers_client_view()
-                self.component_cs_sec_servers.verify_table_contains_subsystem(u'member1_configuration')
-            except Exception as e:
-                error = "\n" + str(e)
-                print(error)
-
-            # Step Log out from security
             self.common_utils.open_url(TESTDATA[u'ss1_url']['url'])
-            self.common_lib.log_out()
-        print("END")
+            self.component_ss_sidebar.open_backup_restore_view()
+            self.component_ss_backup.restore_backup()
 
-        if error:
-            print(error)
+        # Step Log out from security if logged in
+        self.common_utils.open_url(TESTDATA[u'ss1_url']['url'])
+        if not self.ss_login.verify_is_login_page():
+            self.common_lib.log_out()
+
+        # Step Log out from central server if logged in
+        self.common_utils.open_url(TESTDATA[u'cs_url']['url'])
+        if not self.cs_login.verify_is_login_page():
+            self.common_lib.log_out()
+
+        # Step Return server to defaults
+        self.common_lib_ssh.delete_files_from_directory(u'cs_url', strings.backup_directory)
+        self.common_lib_ssh.delete_files_from_directory(u'ss1_url', strings.backup_directory)
 
     def test_deletion_of_the_owner_of_ss_from_cs(self):
         """
@@ -439,7 +410,7 @@ class Xroad_deletion_of_registered_object(BaseTest):
                 * :func:`~common_lib.component_ss_backup.Component_ss_backup.generate_backup`
             * **Step 5: delete client of security server in security server**
                 * :func:`~common_lib.component_ss_sidebar.Component_ss_sidebar.open_security_servers_client_view`
-                * :func:`~pagemodel.ss_clients.Ss_clients.find_and_open_by_text_dlg_by_subsystem_code`, *self.parameters[u'member1_configuration']*
+                * :func:`~pagemodel.ss_clients.Ss_clients.find_and_open_by_text_dlg_by_subsystem_code`, *TESTDATA[u'member1_configuration']*
                 * :func:`~common_lib.component_ss_clients.Component_ss_clients.unregister_and_delete_subsystem_in_subsystem_details_dlg`
             * **Step 6: verify test service status in security server**
             * **Step 7: open central server url**

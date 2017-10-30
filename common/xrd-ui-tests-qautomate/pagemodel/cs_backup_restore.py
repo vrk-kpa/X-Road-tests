@@ -67,6 +67,7 @@ class Cs_backup_restore(CommonUtils):
         # AutoGen method
         self.click_element(self.ID_BACKUP)
         self.wait_until_jquery_ajax_loaded()
+        TESTDATA[u'paths'][u'backup_file'] = self.get_text(self.NEWEST_BACKUP_NAME)
 
     def click_element_newest_restore(self):
         """
@@ -87,19 +88,43 @@ class Cs_backup_restore(CommonUtils):
         self.click_element(self.NEWEST_DELETE)
 
     def verify_contains_all_user_actions(self, parameters=None):
+        """
+        
+        :param parameters:  Test data section dictionary
+        
+        **Test steps:**
+            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.element_should_be_present`, *self.ID_BACKUP*
+            * **Step 2:** :func:`~webframework.extension.util.common_utils.CommonUtils.element_should_be_present`, *self.ID_BACKUP_UPLOAD*
+            * **Step 3:** :func:`~webframework.extension.util.common_utils.CommonUtils.fail`, *errors.backup_name_is_empty*
+            * **Step 4:** :func:`~webframework.extension.util.common_utils.CommonUtils.element_should_be_present`, *self.NEWEST_RESTORE*
+            * **Step 5:** :func:`~webframework.extension.util.common_utils.CommonUtils.element_should_be_present`, *self.NEWEST_DELETE*
+            * **Step 6:** :func:`~webframework.extension.util.common_utils.CommonUtils.element_should_be_present`, *self.NEWEST_DOWNLOAD*
+        """
         self.element_should_be_present(self.ID_BACKUP)
         self.element_should_be_present(self.ID_BACKUP_UPLOAD)
         backup_file = self.get_text(self.NEWEST_BACKUP_NAME)
         if not backup_file:
             self.fail(errors.backup_name_is_empty)
-        else:
-            TESTDATA[u'paths'][u'backup_file'] = backup_file
         self.element_should_be_present(self.NEWEST_RESTORE)
         self.element_should_be_present(self.NEWEST_DELETE)
         self.element_should_be_present(self.NEWEST_DOWNLOAD)
 
     def click_element_newest_download(self, parameters=None):
+        """
+        
+        :param parameters:  Test data section dictionary
+        
+        **Test steps:**
+            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.NEWEST_DOWNLOAD*
+        """
         self.click_element(self.NEWEST_DOWNLOAD)
 
     def click_element_upload_backup_file(self, parameters=None):
+        """
+        
+        :param parameters:  Test data section dictionary
+        
+        **Test steps:**
+            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.ID_BACKUP_UPLOAD*
+        """
         self.click_element(self.ID_BACKUP_UPLOAD)
