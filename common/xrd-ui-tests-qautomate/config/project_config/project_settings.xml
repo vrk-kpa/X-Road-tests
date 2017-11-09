@@ -8,6 +8,7 @@
 		<filter name="xpath"/>
 	</filters>
 	<xpath_type value="xpath-position"/>
+    <slow_down_exec value="1"/>
 	<css_deep value="3"/>
 	<minimize_css value="True"/>
 	<project_proxy_ff value="127.0.0.1"/>
