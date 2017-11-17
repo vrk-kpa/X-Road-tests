@@ -253,7 +253,7 @@ def test_test(case, cs_host, cs_username, cs_password,
             add_sub_as_client_to_member(self, self.config.get('ss1.server_name'), revoke_client, wait_input=wait_input,
                                         check_request=False)
             revoke_requests(self, try_cancel=True,
-                            log_checker=auditchecker.AuditChecker(cs_ssh_host, cs_ssh_user, cs_ssh_pass))
+                            log_checker=None)
             popups.close_all_open_dialogs(self)
             '''Remove added client'''
             remove_client_subsystem(self, revoke_client)
@@ -1195,7 +1195,7 @@ def remove_data(self, cs_host, cs_username, cs_password, sec_1_host, sec_1_usern
     log_checker_ss1 = auditchecker.AuditChecker(host=sec_1_ssh_host, username=sec_1_ssh_username,
                                                 password=sec_1_ssh_password)
     current_log_lines = log_checker_ss1.get_line_count()
-    self.reload_webdriver(sec_1_host, sec_1_password, sec_1_password)
+    self.reload_webdriver(sec_1_host, sec_1_username, sec_1_password)
     safe(self, remove_client_with_cert_and_cancelling, ss_1_client,
          'Client removal with cert and deletion cancelling failed')
     expected_log_msg = DELETE_CLIENT
