@@ -5,7 +5,7 @@ from webframework.extension.util.common_utils import *
 from time import sleep
 from pagemodel.ss_version import Ss_version
 
-class Component_component_cs_version(CommonUtils):
+class Component_cs_version(CommonUtils):
     ss_version = Ss_version()
 
     def verify_version(self, text=u'Central Server version 6'):
