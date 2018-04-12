@@ -4,7 +4,6 @@ from webframework import TESTDATA
 from variables import strings
 from selenium.webdriver.common.by import By
 from webframework.extension.util.common_utils import *
-from webframework.extension.parsers.parameter_parser import get_parameter
 from time import sleep
 
 class Cs_system_settings_change_cs_address_dlg(CommonUtils):

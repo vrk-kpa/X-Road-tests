@@ -4,8 +4,6 @@ from webframework import TESTDATA
 from variables import strings
 from selenium.webdriver.common.by import By
 from webframework.extension.util.common_utils import *
-from webframework.extension.util.webtimings import get_measurements
-from webframework.extension.parsers.parameter_parser import get_parameter
 from time import sleep
 
 class Ss_keys_and_cert_dlg_subject_dname(CommonUtils):

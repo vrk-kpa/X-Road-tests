@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from webframework import TESTDATA
 from webframework.extension.base.setupTest import SetupTest
-from webframework.extension.parsers.parameter_parser import get_all_parameters
 from webframework.extension.util.common_utils import *
 from time import sleep
 from pagemodel.open_application import Open_application

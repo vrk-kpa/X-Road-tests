@@ -387,6 +387,9 @@ setup
     ${paths_section}=  Get section  ${paths}
     set suite variable  ${start_log_time}  Get log utc time
 
+    set suite variable  ${Recording_path}=  Get record path  ${TEST NAME}
+    Start rec  ${Recording_path}
+
     Remove anchor and certs from downloads  ${paths_section}
     Empty all logs from server  ${cs_url}
     Empty all logs from server  ${ss1_url}
@@ -413,6 +416,9 @@ teardown
     ${FailureImage}=  Get failure image path  ${TEST NAME}
     Run Keyword If Test Failed  Take full screenshot  ${FailureImage}
     Run Keyword If Test Failed  Set Suite Metadata  ${TEST NAME} failure  file:///${FailureImage}
+
+    Stop rec
+    Set Suite Metadata  ${TEST NAME} failure  file:///${Recording_path}
 
 Test suite setup
     Open browser  ${BROWSER}

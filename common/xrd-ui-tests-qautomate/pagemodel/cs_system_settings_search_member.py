@@ -3,8 +3,6 @@
 from webframework import TESTDATA
 from selenium.webdriver.common.by import By
 from webframework.extension.util.common_utils import *
-from webframework.extension.util.webtimings import get_measurements
-from webframework.extension.parsers.parameter_parser import get_parameter
 from time import sleep
 
 class Cs_system_settings_search_member(CommonUtils):

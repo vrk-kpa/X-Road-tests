@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 from variables import strings, errors
 from webframework import TESTDATA
-import subprocess
-import os
 from selenium.webdriver.common.by import By
 from webframework.extension.util.common_utils import *
 from webframework.extension.config import get_config_value

@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 from webframework import TESTDATA
-import subprocess
-import os
 import glob
 from urlparse import urlparse
 from selenium.webdriver.common.by import By

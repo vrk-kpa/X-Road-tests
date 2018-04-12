@@ -3,7 +3,6 @@
 from webframework import TESTDATA
 from selenium.webdriver.common.by import By
 from webframework.extension.util.common_utils import *
-from webframework.extension.parsers.parameter_parser import get_parameter
 from time import sleep
 
 class Cs_conf_mgm_activate_confirm_dlg(CommonUtils):
