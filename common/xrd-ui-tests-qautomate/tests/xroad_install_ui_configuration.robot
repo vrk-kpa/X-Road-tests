@@ -387,7 +387,7 @@ setup
     ${paths_section}=  Get section  ${paths}
     Set suite variable  ${start_log_time}  Get log utc time
 
-    Set suite variable  ${Recording_path}  Get record path  ${TEST NAME}
+    ${Recording_path}=  Get record path  ${TEST NAME}
     Start rec  ${Recording_path}
 
     Remove anchor and certs from downloads  ${paths_section}
@@ -418,6 +418,7 @@ teardown
     Run Keyword If Test Failed  Set Suite Metadata  ${TEST NAME} failure  file:///${FailureImage}
 
     Stop rec
+    ${Recording_path}=  Get record path  ${TEST NAME}
     Set Suite Metadata  ${TEST NAME} failure  file:///${Recording_path}
 
 Test suite setup
