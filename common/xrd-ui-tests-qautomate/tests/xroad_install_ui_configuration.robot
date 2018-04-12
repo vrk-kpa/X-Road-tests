@@ -419,7 +419,7 @@ teardown
 
     Stop rec
     ${Recording_path}=  Get record path  ${TEST NAME}
-    Set Suite Metadata  ${TEST NAME} failure  file:///${Recording_path}
+    Set Suite Metadata  ${TEST NAME} recording  file:///${Recording_path}
 
 Test suite setup
     Open browser  ${BROWSER}
