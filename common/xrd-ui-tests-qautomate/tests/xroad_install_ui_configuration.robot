@@ -385,9 +385,9 @@ Test configure ss server with new member add to existing cs 4
 *** Keywords ***
 setup
     ${paths_section}=  Get section  ${paths}
-    set suite variable  ${start_log_time}  Get log utc time
+    Set suite variable  ${start_log_time}  Get log utc time
 
-    set suite variable  ${Recording_path}=  Get record path  ${TEST NAME}
+    Set suite variable  ${Recording_path}  Get record path  ${TEST NAME}
     Start rec  ${Recording_path}
 
     Remove anchor and certs from downloads  ${paths_section}
