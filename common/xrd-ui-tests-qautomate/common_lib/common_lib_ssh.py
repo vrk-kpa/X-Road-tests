@@ -57,7 +57,7 @@ class Common_lib_ssh(CommonUtils):
         """
         server = TESTDATA[section][u'server_address']
         command = "ssh {} 'expr $(date +%s) - $(stat -c %Y $(ls -dt /var/lib/xroad/public/V2/*/ | head -1))'".format(server)
-        return self.run_bash_command(command, True)
+        return self.run_bash_command(command, True).strip()
 
     def verify_if_server_contains_file(self, section="cs_url", path=""):
         """
