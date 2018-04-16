@@ -619,7 +619,7 @@ class Xroad_global_configuration(SetupTest):
 
         # Step Verify configuration directory time
         v2_newest_dir = self.common_lib_ssh.get_newest_directory(u'cs_url', v2_path)
-        time_since_last_generation = self.common_lib_ssh.get_newest_directory_age()
+        time_since_last_generation = int(self.common_lib_ssh.get_newest_directory_age())
         configuration_timeout = int(TESTDATA.get_parameter(u'cs_url', u'configuration_timeout'))
 
         print("time since last dir generation", time_since_last_generation)
