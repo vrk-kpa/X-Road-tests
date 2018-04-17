@@ -548,7 +548,7 @@ class Xroad_global_configuration(SetupTest):
         # Step Verify edit cs address
         self.common_lib_ssh.verify_audit_log(section=u'cs_url', event=strings.edit_cs_address)
 
-        # Step Verify whitespace is parsed (disabled because of bug)
+        # Step Verify whitespace is parsed
         TESTDATA.create_section(section_name=u'whitespace_address')
         TESTDATA[u'whitespace_address'][u'server_address'] = " " + TESTDATA[u'cs_url'][u'server_address']
         self.component_cs_system_settings.change_server_address(section=u'whitespace_address')
