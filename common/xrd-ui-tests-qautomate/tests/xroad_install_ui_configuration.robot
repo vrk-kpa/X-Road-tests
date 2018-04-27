@@ -5,7 +5,7 @@ Suite Teardown  Test suite teardown
 Test Setup      setup
 Test Teardown   teardown
 
-Library     libraries.QautoRobotLib  ${TESTDATA}
+Library     libraries.QautoRobot  ${TESTDATA}
 
 
 *** Variables ***
@@ -67,7 +67,7 @@ Test configure cs and ss mgm servers 1
     # Step Set global conf internal conf key in central server
     Cs sidebar open global configuration view
     Cs conf mgm generate config key  key_type=internal
-    Cs conf_mgm try insert pin code  ${cs_url}
+    Cs conf mgm try insert pin code  ${cs_url}
     Wait until jquery ajax loaded
 
     # Step Set global conf external key in central server
@@ -107,9 +107,9 @@ Test configure cs and ss mgm servers 1
 
     # Step Add sign certificate to security server
     Ss sidebar open keys and certs view
-    Ss keys and certs generate and select certificate_key in ss  ta_generated_key_${sign}
+    Ss keys and certs generate and select certificate key in ss  ta_generated_key_${sign}
     Ss keys and certs generate sign certificate request in ss  ${member_mgm_configuration}
-    Ss keys and certs verify_key and sign certificate sign  ${paths}
+    Ss keys and certs verify key and sign certificate sign  ${paths}
     Ss keys and certs import and upload key certificate  ${sign}
     Ss keys and certs verify uploaded certificate  ${sign}
 
@@ -162,7 +162,7 @@ Test configure cs and ss mgm servers 1
     Ss clients dlg services open wsdl service
 
     # Step Add management service parameters to auth cert deletion
-    Ss services edit wsdl service_parameters in ss  ${wsdl_service_auth_cert_deletion}  ${service_wsdl_auth_cert_deletion}  ${cs_url}  ${service_mgm_address}
+    Ss services edit wsdl service parameters in ss  ${wsdl_service_auth_cert_deletion}  ${service_wsdl_auth_cert_deletion}  ${cs_url}  ${service_mgm_address}
     Ss services add service access rights to all in ss
 
     # Step Add management service parameters to client deletion
@@ -172,7 +172,7 @@ Test configure cs and ss mgm servers 1
     # Step Add management service parameters to auth client registration
     Ss services edit wsdl service parameters in ss  ${wsdl_service_client_reg}  ${service_wsdl_client_reg}  ${cs_url}  ${service_mgm_address}
     Ss services add service access rights to all in ss
-    Ss clients dlg services click close_services dlg
+    Ss clients dlg services click close services dlg
     Log out
     Sleep  2
 
@@ -191,7 +191,7 @@ Test configure ss server with new member add to existing cs 3
 
     # Step Download anchor from central server
     Cs sidebar open global configuration view
-    Cs_conf mgm download source anchor from cs
+    Cs conf mgm download source anchor from cs
     Log out
 
     Sleep  41
@@ -203,7 +203,7 @@ Test configure ss server with new member add to existing cs 3
 
     # Step Verify and insert pin if needed in security server
     Ss sidebar verify sidebar title
-    Ss_sidebar open keys and certs view
+    Ss sidebar open keys and certs view
     Ss keys and certs active token and insert_pin code if needed  ${ss1_url}
 
     # Step Add timestamping services to security server
@@ -216,18 +216,18 @@ Test configure ss server with new member add to existing cs 3
     Ss keys and certs generate and select certificate key in ss  ta_generated_key_${sign}
     Ss keys and certs generate sign certificate request in ss  ${member1_configuration}
     Ss keys and certs verify key and sign certificate sign  ${paths}
-    Ss keys and certs import and_upload_key_certificate  ${sign}
+    Ss keys and certs import and upload key certificate  ${sign}
     Ss keys and certs verify uploaded certificate  ${sign}
 
     # Step Add auth certificate to security server
     Ss sidebar open keys and certs view
-    Ss keys and certs generate and select certificate key in ss  strings.auth_key_label
+    Ss keys and certs generate and select certificate key in ss  ta_generated_key_${auth}
     Ss keys and certs generate auth certificate request in ss  ${member1_configuration}
     Ss keys and certs verify key and sign certificate auth  ${paths}
-    Ss keys and certs import and upload key certificate  auth
+    Ss keys and certs import and upload key certificate  ${auth}
 
     ${cert_number}  ${_}=  Ss keys and certs verify uploaded certificate  ${auth}
-    ${approved_ca_value}=  get parameter  ${server_environment}  ${approved_ca}
+    ${approved_ca_value}=  Get parameter  ${server_environment}  ${approved_ca}
     ${key_auth_name}=  Set variable  ${approved_ca_value} ${cert_number}
 
     # Step Register request auth certificate and activate
@@ -251,7 +251,7 @@ Test configure ss server with new member add to existing cs 3
     Cs login  ${cs_url}
     Cs sidebar open members view
     Cs members new client registration request in cs  ${member1_configuration}
-    Cs_sec_servers_mgm_requests click close mgm req dlg
+    Cs sec servers mgm requests click close mgm req dlg
     Cs members close member details dlg
     Log out
 
@@ -276,7 +276,7 @@ Test configure ss server with new member add to existing cs 3
     Ss sidebar verify sidebar title
     # Step Check service registration complete #Webpage: ss_clients #Parameters: server_configuration
     ${member1_configuration_section}=  Get section  ${member1_configuration}
-    ss_clients verify service registration complete  ${member1_configuration_section}
+    ss clients verify service registration complete  ${member1_configuration_section}
     Log out
 
 Test configure ss server with new member add to existing cs 4
@@ -294,7 +294,7 @@ Test configure ss server with new member add to existing cs 4
 
     # Step Download anchor from central server
     Cs sidebar open global configuration view
-    Cs_conf mgm download source anchor from cs
+    Cs conf mgm download source anchor from cs
     Log out
 
     Sleep  41
@@ -306,7 +306,7 @@ Test configure ss server with new member add to existing cs 4
 
     # Step Verify and insert pin if needed in security server
     Ss sidebar verify sidebar title
-    Ss_sidebar open keys and certs view
+    Ss sidebar open keys and certs view
     Ss keys and certs active token and insert_pin code if needed  ${ss2_url}
 
     # Step Add timestamping services to security server
@@ -324,13 +324,13 @@ Test configure ss server with new member add to existing cs 4
 
     # Step Add auth certificate to security server
     Ss sidebar open keys and certs view
-    Ss keys and certs generate and select certificate key in ss  strings.auth_key_label
+    Ss keys and certs generate and select certificate key in ss  ta_generated_key_${auth}
     Ss keys and certs generate auth certificate request in ss  ${member2_configuration}
     Ss keys and certs verify key and sign certificate auth  ${paths}
-    Ss keys and certs import and upload key certificate  auth
+    Ss keys and certs import and upload key certificate  ${auth}
 
     ${cert_number}  ${_}=  Ss keys and certs verify uploaded certificate  ${auth}
-    ${approved_ca_value}=  get parameter  ${server_environment}  ${approved_ca}
+    ${approved_ca_value}=  Get parameter  ${server_environment}  ${approved_ca}
     ${key_auth_name}=  Set variable  ${approved_ca_value} ${cert_number}
 
     # Step Register request auth certificate and activate
@@ -354,7 +354,7 @@ Test configure ss server with new member add to existing cs 4
     Cs login  ${cs_url}
     Cs sidebar open members view
     Cs members new client registration request in cs  ${member2_configuration}
-    Cs_sec_servers_mgm_requests click close mgm req dlg
+    Cs sec servers mgm requests click close mgm req dlg
     Cs members close member details dlg
     Log out
 
@@ -379,16 +379,14 @@ Test configure ss server with new member add to existing cs 4
     Ss sidebar verify sidebar title
     # Step Check service registration complete #Webpage: ss_clients #Parameters: server_configuration
     ${member2_configuration_section}=  Get section  ${member2_configuration}
-    ss_clients verify service registration complete  ${member2_configuration_section}
+    ss clients verify service registration complete  ${member2_configuration_section}
     Log out
 
 *** Keywords ***
 setup
-    ${paths_section}=  Get section  ${paths}
-    Set suite variable  ${start_log_time}  Get log utc time
+    Start recording  ${TEST NAME}
 
-    ${Recording_path}=  Get record path  ${TEST NAME}
-    Start rec  ${Recording_path}
+    ${paths_section}=  Get section  ${paths}
 
     Remove anchor and certs from downloads  ${paths_section}
     Empty all logs from server  ${cs_url}
@@ -398,28 +396,16 @@ setup
 
 teardown
     ${paths_section}=  Get section  ${paths}
-    ${stop_log_time}=  Get log utc time
-
-    #${_}  ${copy_log}=  Get log file paths
-    #Run Keyword If Test Failed  Ssh get all logs from server  ${ss_mgm_url}
-    #Run Keyword If Test Failed  Ssh find exception from logs and save  ${start_log_time}  ${stop_log_time}  ${ss_mgm_url}  ${copy_log}
-    #Run Keyword If Test Failed  Ssh get all logs from server  ${cs_url}
-    #Run Keyword If Test Failed  Ssh find exception from logs and save  ${start_log_time}  ${stop_log_time}  ${cs_url}  ${copy_log}
-    #Run Keyword If Test Failed  Ssh get all logs from server  ${ss1_url}
-    #Run Keyword If Test Failed  Ssh find exception from logs and save  ${start_log_time}  ${stop_log_time}  ${ss1_url}  ${copy_log}
-    #Run Keyword If Test Failed  Ssh get all logs from server  ${ss2_url}
-    #Run Keyword If Test Failed  Ssh find exception from logs and save  ${start_log_time}  ${stop_log_time}  ${ss2_url}  ${copy_log}
 
     Get ui error message
     Remove anchor and certs from downloads  ${paths_section}
 
-    ${FailureImage}=  Get failure image path  ${TEST NAME}
-    Run Keyword If Test Failed  Take full screenshot  ${FailureImage}
-    Run Keyword If Test Failed  Set Suite Metadata  ${TEST NAME} failure  file:///${FailureImage}
+    ${failure_image_path}=  Get failure image path  ${TEST NAME}
+    Run Keyword If Test Failed  Take full screenshot  ${failure_image_path}
+    Run Keyword If Test Failed  Set Suite Metadata  ${TEST NAME} failure  file:///${failure_image_path}
 
-    Stop rec
-    ${Recording_path}=  Get record path  ${TEST NAME}
-    Set Suite Metadata  ${TEST NAME} recording  file:///${Recording_path}
+    ${recording_path}=  Stop recording
+    Run Keyword If Test Failed  Set Suite Metadata  ${TEST NAME} recording  file:///${recording_path}
 
 Test suite setup
     Open browser  ${BROWSER}

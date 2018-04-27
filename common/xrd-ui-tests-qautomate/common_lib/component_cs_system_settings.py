@@ -34,6 +34,36 @@ class Component_cs_system_settings(CommonUtils):
     cs_initial_conf_initilialized_dlg = Cs_initial_conf_initilialized_dlg()
     cs_system_settings_change_cs_address_dlg = Cs_system_settings_change_cs_address_dlg()
 
+    def create_whitespace_address_testdata(self, section):
+        """
+        Add whitespace server address into testdata
+
+        :param section: Test data section name
+        :return:
+        """
+        TESTDATA.create_section(section_name=section)
+        TESTDATA[section][u'server_address'] = " " + TESTDATA[u'cs_url'][u'server_address']
+
+    def create_empty_address_testdata(self, section):
+        """
+        Add empty server address into testdata
+
+        :param section: Test data section name
+        :return:
+        """
+        TESTDATA.create_section(section_name=section)
+        TESTDATA[section][u'server_address'] = u''
+
+    def create_long_address_testdata(self, section):
+        """
+        Add long server address into testdata
+
+        :param section: Test data section name
+        :return:
+        """
+        TESTDATA.create_section(section_name=section)
+        TESTDATA[section][u'server_address'] = u'x' * 256
+
     def register_subsystem_system_settings_in_cs(self, section=u'member_mgm_configuration'):
         """
         Register subsystem settings in central server
@@ -88,7 +118,6 @@ class Component_cs_system_settings(CommonUtils):
         self.cs_system_settings_search_member.click_element_dlg_select()
 
     # TODO FIX
-
     def initialize_cs_server_config(self, section=u'cs_url'):
         """
         Initialize central servers server config
