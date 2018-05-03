@@ -6,6 +6,7 @@ from webframework.extension.util.common_utils import *
 from webframework.extension.config import get_config_value
 from webframework.extension.util.file_utils import get_file_content
 from time import sleep
+from logging import warn
 
 class Common_lib_ssh(CommonUtils):
     """
@@ -287,13 +288,13 @@ class Common_lib_ssh(CommonUtils):
         if not event == newest_log["event"]:
             log_file_tail = self.parse_log_file_tail(log_output)
             if event in log_file_tail:
-                print("WARN newest log not same, but found in file\n" + log_file_tail)
+                warn("WARN newest log not same, but found in file\n" + log_file_tail)
             else:
                 self.fail(errors.log_event_fail(event) + "\n" + log_file_tail)
         if not user == newest_log["user"]:
             log_file_tail = self.parse_log_file_tail(log_output)
             if event in log_file_tail:
-                print("WARN newest log not same, but found in file\n" + log_file_tail)
+                warn("WARN newest log not same, but found in file\n" + log_file_tail)
             else:
                 self.fail(errors.log_user_fail(user) + "\n" + log_file_tail)
 
