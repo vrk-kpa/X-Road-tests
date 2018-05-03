@@ -26,7 +26,7 @@ ${False}=  False
 *** Test Cases ***
 Test change the graphical user interface language
     # Step Open central server
-    Cs login  ${cs_url}  False
+    Cs login  ${cs_url}  ${False}
 
     # Step Change language
     Common open select language_dlg
@@ -41,7 +41,7 @@ Test change the graphical user interface language
 
 Test view the installed software version
     # Step login to central server
-    Cs login  ${cs_url}  False
+    Cs login  ${cs_url}  ${False}
 
     # Step open version view
     Cs sidebar open version view
@@ -54,7 +54,7 @@ Test view the installed software version
 
 Test view backup list
     # Step Login to central server
-    Cs login  ${cs_url}  False
+    Cs login  ${cs_url}  ${False}
 
     # Step Open backup view
     Cs sidebar open backup restore view
@@ -70,7 +70,7 @@ Test view backup list
 
 Test backup configuration
     # Step Login to central server
-    Cs login  ${cs_url}  False
+    Cs login  ${cs_url}  ${False}
 
     # Step Open backup view
     Cs sidebar open backup restore view
@@ -86,7 +86,7 @@ Test backup configuration
 
 Test restore backup
     # Step Login to central server
-    Cs login  ${cs_url}  False
+    Cs login  ${cs_url}  ${False}
 
     # Step Open backup view
     Cs sidebar open backup restore view
@@ -108,7 +108,7 @@ Test restore backup
 
 Test download backup
     # Step Login to central server
-    Cs login  ${cs_url}  False
+    Cs login  ${cs_url}  ${False}
 
     # Step Open backup view
     Cs sidebar open backup restore view
@@ -124,7 +124,7 @@ Test download backup
 
 Test delete backup
     # Step Login to central server
-    Cs login  ${cs_url}  False
+    Cs login  ${cs_url}  ${False}
 
     # Step Open backup view
     Cs sidebar open backup restore view
@@ -143,7 +143,7 @@ Test delete backup
 
 Test upload backup
     # Step Login to central server
-    Cs login  ${cs_url}  False
+    Cs login  ${cs_url}  ${False}
 
     # Step Open backup view
     Cs sidebar open backup restore view
