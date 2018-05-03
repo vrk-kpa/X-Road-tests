@@ -291,7 +291,11 @@ class Common_lib_ssh(CommonUtils):
             else:
                 self.fail(errors.log_event_fail(event) + "\n" + log_file_tail)
         if not user == newest_log["user"]:
-            self.fail(errors.log_user_fail(user) + "\n" + self.parse_log_file_tail(log_output))
+            log_file_tail = self.parse_log_file_tail(log_output)
+            if event in log_file_tail:
+                print("WARN newest log not same, but found in file\n" + log_file_tail)
+            else:
+                self.fail(errors.log_user_fail(user) + "\n" + log_file_tail)
 
     def verify_jetty_log(self, section=u'ss1_url', event="Log in user"):
         """
