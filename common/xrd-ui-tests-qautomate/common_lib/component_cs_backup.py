@@ -178,7 +178,7 @@ class Component_cs_backup(CommonUtils):
         # Step Verify message and logs
         self.component_common.verify_notice_message(strings.backup_file_uploaded)
         # TODO Autologin audit log is activated same time sometimes
-        #self.common_lib_ssh.verify_audit_log(u'cs_url', event=strings.upload_backup_audit_log)
+        self.common_lib_ssh.verify_audit_log(u'cs_url', event=strings.upload_backup_audit_log)
 
         self.wait_until_jquery_ajax_loaded()
 
