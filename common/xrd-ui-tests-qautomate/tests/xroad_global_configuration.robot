@@ -288,7 +288,7 @@ setup
 teardown
     ${stop_log_time}=  Get log utc time
     ${test_data_section}=  Get section  ${cs_url}
-    ${download_folder}=  Get parameter  ${paths}  ${downloads_folder}
+    ${download_folder_param}=  Get parameter  ${paths}  ${downloads_folder}
 
     ${failure_image_path}=  Get failure image path  ${TEST NAME}
     Run Keyword If Test Failed  Take full screenshot  ${failure_image_path}
@@ -309,7 +309,7 @@ teardown
     Run Keyword If  "${verify_login_page}"=="${False}"  Log out
 
     # Step revert to defaults
-    Delete files with extension  ${download_folder}  ${xml_ext}
+    Delete files with extension  ${download_folder_param}  ${xml_ext}
 
     Cs conf mgm delete conf part file  ${ini_file}  try_expect=${True}
 
