@@ -161,7 +161,6 @@ Test activate and delete config signing key
     # Step Log out
     Log out
 
-
 Test view sys param and edit address of cs
     # Step Login to central server and open system settings
     Cs login  section=${cs_url}
@@ -283,8 +282,7 @@ setup
     Delete files with extension  ${download_folder}  ${xml_ext}
     Empty all logs from server  ${cs_url}
     Empty all logs from server  ${ss1_url}
-
-
+et
 teardown
     ${stop_log_time}=  Get log utc time
     ${test_data_section}=  Get section  ${cs_url}
@@ -312,7 +310,6 @@ teardown
     Delete files with extension  ${download_folder_param}  ${xml_ext}
 
     Cs conf mgm delete conf part file  ${ini_file}  try_expect=${True}
-
 
 Test suite setup
     Open browser  ${BROWSER}

@@ -9,6 +9,7 @@ Library     libraries.QautoRobot  ${TESTDATA}
 
 
 *** Variables ***
+${cs_url}=  cs_url
 ${ss1_url}=  ss1_url
 ${security_server_url_wrong_password}=  security_server_url_wrong_password
 
@@ -21,6 +22,12 @@ ${authentication_failed}=  Authentication failed
 ${backup_directory}=  /var/lib/xroad/backup
 ${lanquage_eng}=  ENGLISH (EN)
 ${set_ui_language}=  Set UI language
+${version_text}=  Security Server version 6
+
+${delete_timestamping_services}=  Delete timestamping service
+${add_timestamping_services}=  Add timestamping service
+${add_timestamping_services_failed}=  Add timestamping service failed
+
 
 ${True}=  True
 ${False}=  False
@@ -35,7 +42,7 @@ Test login and logout ss gui
     Ssh verify audit log  ${ss1_url}  ${login_user}
 
     # Step Log out from system GUI
-    Log_out
+    Log out
 
     # Step System logs the event “Log out user” to the audit log.
     Ssh verify audit log  ${ss1_url}  ${logout_user}
@@ -49,14 +56,16 @@ Test login with wrong password
     Ssh verify audit log  ${ss1_url}  ${login_user_failed}
 
 Test login restore back up in process
+    # Step Open browser and start restoring backup
     Open browser
     Ss login  ${ss1_url}
     Ss sidebar open backup restore view
     Ss backup generate backup
     Ss backup restore click element first row restore
     Ss backup restore confirm restore click button confirm  ${False}
+    Close browser
 
-    Switch browser  ${AutogenBrowser}
+    # Switch browser  ${AutogenBrowser}
     # Step Open security server for login add user name password
     Ss login  ${ss1_url}  initial_conf=${True}  wait_for_jquery=${False}
 
@@ -65,6 +74,8 @@ Test login restore back up in process
     Ss verify login fail  ${login_restore_in_progress}
     # 3a.2. System logs the event “Log out user” to the audit log.
     Ssh verify audit log  ${ss1_url}  ${logout_user}
+    # TODO add verification that back up is done
+    Sleep  10
 
 Test change language
     # Step Open security server for login add user name password
@@ -78,6 +89,65 @@ Test change language
     # Step Verify audit log for language change
     Ssh verify audit log  ss1_url  ${set_ui_language}
 
+Test view installed software version
+    # Step Open security server for login add user name password
+    Ss login  ${ss1_url}
+
+    # Step Open version view
+    Ss sidebar open version view
+
+    # Step Verify version
+    Ss version verify version  ${version_text}
+
+    # Step Log out
+    Log out
+
+Test timestamping services
+    # Add timestamping service, view timestamping service, try add existing tsp service and delete tsp service
+    # Step Open security server for login add user name password
+    Ss login  ss1_url
+    Ss sidebar open system parameters view
+
+    # Step Delete timestamp services
+    Ss delete timestamping url from ss  ${cs_url}
+    Ssh verify audit log  ${ss1_url}  ${delete_timestamping_services}
+
+    # Step Add timestamp services
+    Ss add timestamping url to ss  ${cs_url}
+    Ssh verify audit log  ${ss1_url}  ${add_timestamping_services}
+
+    # Step Add timestamp services fail
+    Ss add timestamping url to ss  ${cs_url}
+    Ssh verify audit log  ${ss1_url}  ${add_timestamping_services_failed}
+
+    # Step Log out
+    Log out
+
+Test view certificate details
+    # Step Open security server for login add user name password
+    Ss login  ${ss1_url}  ${False}  ${True}
+
+    # Step View certificate details
+    Ss sidebar open keys and certs view
+    Ss keys and certs verify details dlg
+
+    # Step Log out
+    Log out
+
+Test open multiple diagnostics simultaneously
+    Ss login  ${ss1_url}  ${False}  ${True}
+
+    ${autogen_browser2}=  Open browser
+    Ss login  ${ss1_url}  ${False}  ${True}
+
+    Switch_browser  ${AutogenBrowser}
+    Ss sidebar open diagnostics view
+
+    Switch_browser  ${autogen_browser2}
+    Ss sidebar open diagnostics view
+    Close_browser
+
+    Log out
 
 *** Keywords ***
 setup
@@ -103,4 +173,4 @@ Test suite setup
 
 Test suite teardown
     Close all browsers
-    Ssh delete files from directory  ${ss1_url}  ${backup_directory}
+    Ssh delete files from directory  ${cs_url}  ${backup_directory}
