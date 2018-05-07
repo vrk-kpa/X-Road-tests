@@ -83,7 +83,7 @@ Test generate cert request and import auth
     Ss keys and certs register auth certificate in ss  ${key_auth_name}  ${member1_configuration}
     Log out
 
-    Login  ${cs_url}
+    Cs login  ${cs_url}
     Cs sidebar open security servers view
     # Step Find security server by member name
     ${member_name_parameter}=  Get parameter  ${member1_configuration}  ${member_name}
