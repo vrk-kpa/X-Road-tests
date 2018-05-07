@@ -65,7 +65,6 @@ Test login restore back up in process
     Ss backup restore confirm restore click button confirm  ${False}
     Close browser
 
-    # Switch browser  ${AutogenBrowser}
     # Step Open security server for login add user name password
     Ss login  ${ss1_url}  initial_conf=${True}  wait_for_jquery=${False}
 
@@ -137,13 +136,13 @@ Test view certificate details
 Test open multiple diagnostics simultaneously
     Ss login  ${ss1_url}  ${False}  ${True}
 
-    ${autogen_browser2}=  Open browser
+    ${browser2}=  Open browser
     Ss login  ${ss1_url}  ${False}  ${True}
 
-    Switch_browser  ${AutogenBrowser}
+    Switch_browser  ${DefaultBrowser}
     Ss sidebar open diagnostics view
 
-    Switch_browser  ${autogen_browser2}
+    Switch_browser  ${browser2}
     Ss sidebar open diagnostics view
     Close_browser
 
@@ -168,8 +167,8 @@ teardown
     Run Keyword If Test Failed  Set Suite Metadata  ${TEST NAME} recording  file:///${recording_path}
 
 Test suite setup
-    ${AutogenBrowser}=  Open browser  ${BROWSER}
-    Set suite variable  ${AutogenBrowser}  ${AutogenBrowser}
+    ${DefaultBrowser}=  Open browser  ${BROWSER}
+    Set suite variable  ${DefaultBrowser}  ${DefaultBrowser}
 
 Test suite teardown
     Close all browsers

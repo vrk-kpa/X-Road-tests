@@ -312,7 +312,8 @@ teardown
     Cs conf mgm delete conf part file  ${ini_file}  try_expect=${True}
 
 Test suite setup
-    Open browser  ${BROWSER}
+    ${DefaultBrowser}=  Open browser  ${BROWSER}
+    Set suite variable  ${DefaultBrowser}  ${DefaultBrowser}
 
 Test suite teardown
     Close all browsers

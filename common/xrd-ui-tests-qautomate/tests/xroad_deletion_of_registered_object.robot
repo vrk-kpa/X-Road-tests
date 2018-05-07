@@ -222,8 +222,8 @@ teardown
     Run Keyword If Test Failed  Set Suite Metadata  ${TEST NAME} recording  file:///${recording_path}
 
 Test suite setup
-    ${AutogenBrowser}=  Open browser  ${BROWSER}
-    Set suite variable  ${AutogenBrowser}  ${AutogenBrowser}
+    ${DefaultBrowser}=  Open browser  ${BROWSER}
+    Set suite variable  ${DefaultBrowser}  ${DefaultBrowser}
 
 Test suite teardown
     Close all browsers
