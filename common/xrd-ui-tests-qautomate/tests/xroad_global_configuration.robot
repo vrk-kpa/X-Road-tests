@@ -288,12 +288,11 @@ teardown
     ${test_data_section}=  Get section  ${cs_url}
     ${download_folder_param}=  Get parameter  ${paths}  ${downloads_folder}
 
+    ${documentation}=  Generate failure documentation  ${TEST_DOCUMENTATION}  ${TEST NAME}
+    Run Keyword If Test Failed  Set test documentation  ${documentation}
+
     ${failure_image_path}=  Get failure image path  ${TEST NAME}
     Run Keyword If Test Failed  Take full screenshot  ${failure_image_path}
-    Run Keyword If Test Failed  Set Suite Metadata  ${TEST NAME} failure  file:///${failure_image_path}
-
-    ${recording_path}=  Stop recording
-    Run Keyword If Test Failed  Set Suite Metadata  ${TEST NAME} recording  file:///${recording_path}
 
     ${verify_login_page}=  Ss login verify is login page
     Run Keyword If  "${login_to_token}"=="${True}"  Cs sidebar open global configuration view
@@ -310,6 +309,8 @@ teardown
     Delete files with extension  ${download_folder_param}  ${xml_ext}
 
     Cs conf mgm delete conf part file  ${ini_file}  try_expect=${True}
+
+    Stop recording
 
 Test suite setup
     ${DefaultBrowser}=  Open browser  ${BROWSER}

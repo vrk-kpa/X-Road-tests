@@ -400,12 +400,13 @@ teardown
     Get ui error message
     Remove anchor and certs from downloads  ${paths_section}
 
+    ${documentation}=  Generate failure documentation  ${TEST_DOCUMENTATION}  ${TEST NAME}
+    Run Keyword If Test Failed  Set test documentation  ${documentation}
+
     ${failure_image_path}=  Get failure image path  ${TEST NAME}
     Run Keyword If Test Failed  Take full screenshot  ${failure_image_path}
-    Run Keyword If Test Failed  Set Suite Metadata  ${TEST NAME} failure  file:///${failure_image_path}
 
-    ${recording_path}=  Stop recording
-    Run Keyword If Test Failed  Set Suite Metadata  ${TEST NAME} recording  file:///${recording_path}
+    Stop recording
 
 Test suite setup
     ${DefaultBrowser}=  Open browser  ${BROWSER}

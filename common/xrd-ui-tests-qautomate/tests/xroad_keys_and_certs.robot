@@ -156,9 +156,11 @@ setup
     Ssh empty all logs from server  ${ss1_url}
 
 teardown
+    ${documentation}=  Generate failure documentation  ${TEST_DOCUMENTATION}  ${TEST NAME}
+    Run Keyword If Test Failed  Set test documentation  ${documentation}
+
     ${failure_image_path}=  Get failure image path  ${TEST NAME}
     Run Keyword If Test Failed  Take full screenshot  ${failure_image_path}
-    Run Keyword If Test Failed  Set Suite Metadata  ${TEST NAME} failure  file:///${failure_image_path}
 
     ${path_section}=  Get section  ${paths}
     Remove cert from downloads  ${path_section}
@@ -169,8 +171,7 @@ teardown
     ${verify_login_page}=  Ss login verify is login page
     Run Keyword If  "${verify_login_page}"=="${False}"  Log out
 
-    ${recording_path}=  Stop recording
-    Run Keyword If Test Failed  Set Suite Metadata  ${TEST NAME} recording  file:///${recording_path}
+    Stop recording
 
 Test suite setup
     ${DefaultBrowser}=  Open browser  ${BROWSER}

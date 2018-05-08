@@ -185,9 +185,11 @@ setup
     Empty all logs from server  ${ss1_url}
 
 teardown
+    ${documentation}=  Generate failure documentation  ${TEST_DOCUMENTATION}  ${TEST NAME}
+    Run Keyword If Test Failed  Set test documentation  ${documentation}
+
     ${failure_image_path}=  Get failure image path  ${TEST NAME}
     Run Keyword If Test Failed  Take full screenshot  ${failure_image_path}
-    Run Keyword If Test Failed  Set Suite Metadata  ${TEST NAME} failure  file:///${failure_image_path}
 
     ${cs_url_parameter}=  get_parameter  ${cs_url}  ${url}
     ${ss1_url_parameter}=  get_parameter  ${ss1_url}  ${url}
@@ -218,8 +220,7 @@ teardown
     Ssh delete files from directory  ${cs_url}  ${backup_directory}
     Ssh delete files from directory  ${ss1_url}  ${backup_directory}
 
-    ${recording_path}=  Stop recording
-    Run Keyword If Test Failed  Set Suite Metadata  ${TEST NAME} recording  file:///${recording_path}
+    Stop recording
 
 Test suite setup
     ${DefaultBrowser}=  Open browser  ${BROWSER}
