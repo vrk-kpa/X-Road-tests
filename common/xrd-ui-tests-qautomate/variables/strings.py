@@ -1,5 +1,5 @@
 import os
-from webframework.extension.parsers.parameter_parser import get_parameter, get_all_parameters
+from extension.parsers.parameter_parser import get_parameter, get_all_parameters
 
 # Jetty log events
 failed_to_generate_global_config = u'Processing internal configuration failed:'

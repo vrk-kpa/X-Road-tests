@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import os
 from variables import strings
-from webframework import TESTDATA
+from extension import TESTDATA
 from selenium.webdriver.common.by import By
-from webframework.extension.util.common_utils import *
+from SeleniumQautorobot import *
 from time import sleep
 from common_lib import Common_lib
 from pagemodel.cs_backup_restore_dlg_restore_confirm import Cs_backup_restore_dlg_restore_confirm

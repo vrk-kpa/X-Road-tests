@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Example for using WebDriver object: driver = get_driver() e.g driver.current_url
-from webframework import TESTDATA
+from extension import TESTDATA
 from selenium.webdriver.common.by import By
-from webframework.extension.util.common_utils import *
+from SeleniumQautorobot import *
 from time import sleep
 
 class Cs_members_details_dlg(CommonUtils):
@@ -66,7 +66,7 @@ class Cs_members_details_dlg(CommonUtils):
         Click button to delete member
         
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.DELETE*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.DELETE*
         """
         # AutoGen method
         self.click_element(self.DELETE)
@@ -76,7 +76,7 @@ class Cs_members_details_dlg(CommonUtils):
         Click tab to open member details in dialog
         
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.MEMBER_DETAILS*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.MEMBER_DETAILS*
         """
         self.click_element(self.MEMBER_DETAILS)
 
@@ -85,7 +85,7 @@ class Cs_members_details_dlg(CommonUtils):
         Click tab to open subsystems view in dialog
         
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.SUBSYSTEMS*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.SUBSYSTEMS*
         """
         self.click_element(self.SUBSYSTEMS)
 
@@ -94,7 +94,7 @@ class Cs_members_details_dlg(CommonUtils):
         Click button to close the dialog
         
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.BUTTON_CLOSE*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.BUTTON_CLOSE*
         """
         # AutoGen method
         self.click_element(self.BUTTON_CLOSE)
@@ -104,8 +104,8 @@ class Cs_members_details_dlg(CommonUtils):
         Click tab to open owned servers view in dialog
 
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.OWNED_SERVERS*
-            * **Step 2:** :func:`~webframework.extension.util.common_utils.CommonUtils.wait_until_jquery_ajax_loaded`
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.OWNED_SERVERS*
+            * **Step 2:** :func:`~extension.extension.util.common_utils.CommonUtils.wait_until_jquery_ajax_loaded`
         """
         self.click_element(self.OWNED_SERVERS)
         self.wait_until_jquery_ajax_loaded()
@@ -115,7 +115,7 @@ class Cs_members_details_dlg(CommonUtils):
         Wait until certificate is submitted. Waiting for text u'Request of adding auth'
         
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.wait_until_element_contains`, *self.CLASS_MESSAGE*, *u'Request of adding auth'*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.wait_until_element_contains`, *self.CLASS_MESSAGE*, *u'Request of adding auth'*
         """
         self.wait_until_element_contains(self.CLASS_MESSAGE, u'Request of adding auth')
 
@@ -124,6 +124,6 @@ class Cs_members_details_dlg(CommonUtils):
         Click tab to show management requests view in dialog
 
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.MANAGEMENT_REQUESTS_TAB*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.MANAGEMENT_REQUESTS_TAB*
         """
         self.click_element(self.MANAGEMENT_REQUESTS_TAB)

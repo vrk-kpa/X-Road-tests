@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Example for using WebDriver object: driver = get_driver() e.g driver.current_url
-from webframework import TESTDATA
+from extension import TESTDATA
 from selenium.webdriver.common.by import By
-from webframework.extension.util.common_utils import *
+from SeleniumQautorobot import *
 from time import sleep
 
 class Ss_login(CommonUtils):
@@ -51,10 +51,10 @@ class Ss_login(CommonUtils):
         :param wait_for_jquery:  If true method waits for jquery
         
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.input_text`, *self.ID_J_USERNAME*, *parameters[u'j_username']*
-            * **Step 2:** :func:`~webframework.extension.util.common_utils.CommonUtils.input_text`, *self.ID_J_PASSWORD*, *parameters[u'j_password']*
-            * **Step 3:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.LOGIN*
-            * **Step 4:** :func:`~webframework.extension.util.common_utils.CommonUtils.wait_until_jquery_ajax_loaded`
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.input_text`, *self.ID_J_USERNAME*, *parameters[u'j_username']*
+            * **Step 2:** :func:`~extension.extension.util.common_utils.CommonUtils.input_text`, *self.ID_J_PASSWORD*, *parameters[u'j_password']*
+            * **Step 3:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.LOGIN*
+            * **Step 4:** :func:`~extension.extension.util.common_utils.CommonUtils.wait_until_jquery_ajax_loaded`
         """
         self.input_text(self.ID_J_USERNAME, parameters[u'j_username'])
         self.input_text(self.ID_J_PASSWORD, parameters[u'j_password'])
@@ -69,7 +69,7 @@ class Ss_login(CommonUtils):
         :param text:  String value for text
         
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.wait_until_page_contains`, *text*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.wait_until_page_contains`, *text*
         """
         self.wait_until_page_contains(text)
 

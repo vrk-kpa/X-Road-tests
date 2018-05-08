@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Example for using WebDriver object: driver = get_driver() e.g driver.current_url
-from webframework import TESTDATA
+from extension import TESTDATA
 from selenium.webdriver.common.by import By
-from webframework.extension.util.common_utils import *
+from SeleniumQautorobot import *
 from time import sleep
 
 class Ss_keys_cert_dlg_generate_key(CommonUtils):
@@ -52,8 +52,8 @@ class Ss_keys_cert_dlg_generate_key(CommonUtils):
         :param text:  String value for text
         
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.input_text`, *self.ID_LABEL*, *text*
-            * **Step 2:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.BUTTON_OK*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.input_text`, *self.ID_LABEL*, *text*
+            * **Step 2:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.BUTTON_OK*
         """
         self.input_text(self.ID_LABEL, text)
         self.click_element(self.BUTTON_OK)

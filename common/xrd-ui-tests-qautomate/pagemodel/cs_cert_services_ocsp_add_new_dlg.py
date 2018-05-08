@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Example for using WebDriver object: driver = get_driver() e.g driver.current_url
-from webframework import TESTDATA
+from extension import TESTDATA
 from selenium.webdriver.common.by import By
-from webframework.extension.util.common_utils import *
+from SeleniumQautorobot import *
 from time import sleep
 
 class Cs_cert_services_ocsp_add_new_dlg(CommonUtils):
@@ -56,7 +56,7 @@ class Cs_cert_services_ocsp_add_new_dlg(CommonUtils):
         :param parameters:  Test data section dictionary
         
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.input_text`, *self.ID_OCSP_RESPONDER_URL*, *parameters['ocsp_responder_url']*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.input_text`, *self.ID_OCSP_RESPONDER_URL*, *parameters['ocsp_responder_url']*
         """
         # AutoGen method
         self.input_text(self.ID_OCSP_RESPONDER_URL, parameters['ocsp_responder_url'])
@@ -66,7 +66,7 @@ class Cs_cert_services_ocsp_add_new_dlg(CommonUtils):
         Click ok button
         
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.BUTTON_OK*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.BUTTON_OK*
         """
         # AutoGen method
         self.click_element(self.BUTTON_OK)

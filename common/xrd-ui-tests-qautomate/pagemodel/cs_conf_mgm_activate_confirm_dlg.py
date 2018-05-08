@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Example for using WebDriver object: driver = self.get_current_driver() e.g driver.current_url
-from webframework import TESTDATA
+from extension import TESTDATA
 from selenium.webdriver.common.by import By
-from webframework.extension.util.common_utils import *
+from SeleniumQautorobot import *
 from time import sleep
 
 class Cs_conf_mgm_activate_confirm_dlg(CommonUtils):
@@ -52,6 +52,6 @@ class Cs_conf_mgm_activate_confirm_dlg(CommonUtils):
         Click button to confirm the dialog
         
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.BUTTON_CONFIRM*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.BUTTON_CONFIRM*
         """
         self.click_element(self.BUTTON_CONFIRM)

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Example for using WebDriver object: driver = get_driver() e.g driver.current_url
-from webframework import TESTDATA
+from extension import TESTDATA
 from selenium.webdriver.common.by import By
-from webframework.extension.util.common_utils import *
+from SeleniumQautorobot import *
 from time import sleep
 
 class Ss_client_dlg_details(CommonUtils):
@@ -64,9 +64,9 @@ class Ss_client_dlg_details(CommonUtils):
         Click button to unregister the client
 
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.ID_CLIENT_DELETE*
-            * **Step 2:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.CLASS_UI_STATE_FOCUS*
-            * **Step 3:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.ID_CLIENT_UNREGISTER*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.ID_CLIENT_DELETE*
+            * **Step 2:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.CLASS_UI_STATE_FOCUS*
+            * **Step 3:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.ID_CLIENT_UNREGISTER*
         """
         sleep(1)
         #if self.is_visible(self.ID_CLIENT_DELETE,5):

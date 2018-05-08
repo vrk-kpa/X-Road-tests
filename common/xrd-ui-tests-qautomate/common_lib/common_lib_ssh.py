@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from variables import strings, errors
-from webframework import TESTDATA
+from extension import TESTDATA
 from selenium.webdriver.common.by import By
-from webframework.extension.util.common_utils import *
-from webframework.extension.config import get_config_value
-from webframework.extension.util.file_utils import get_file_content
+from SeleniumQautorobot import *
+from extension.config import get_config_value
+from FileOperations import get_file_content
 from time import sleep
 from logging import warn
 

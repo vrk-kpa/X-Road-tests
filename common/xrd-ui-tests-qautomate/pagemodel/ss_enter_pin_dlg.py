@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Example for using WebDriver object: driver = get_driver() e.g driver.current_url
-from webframework import TESTDATA
+from extension import TESTDATA
 from selenium.webdriver.common.by import By
-from webframework.extension.util.common_utils import *
+from SeleniumQautorobot import *
 from time import sleep
 
 class Ss_enter_pin_dlg(CommonUtils):
@@ -54,7 +54,7 @@ class Ss_enter_pin_dlg(CommonUtils):
         :param parameters:  Test data section dictionary
         
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.input_text`, *self.ID_ACTIVATE_TOKEN_PIN*, *parameters['pin']*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.input_text`, *self.ID_ACTIVATE_TOKEN_PIN*, *parameters['pin']*
         """
         # AutoGen method
         self.input_text(self.ID_ACTIVATE_TOKEN_PIN, parameters['pin'])
@@ -64,7 +64,7 @@ class Ss_enter_pin_dlg(CommonUtils):
         Click button to ok the dialog
         
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.BUTTON_OK*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.BUTTON_OK*
         """
         # AutoGen method
         self.click_element(self.BUTTON_OK)

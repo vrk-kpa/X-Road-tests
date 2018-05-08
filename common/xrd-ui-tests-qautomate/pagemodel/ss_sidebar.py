@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Example for using WebDriver object: driver = get_driver() e.g driver.current_url
-from webframework import TESTDATA
+from extension import TESTDATA
 from selenium.webdriver.common.by import By
-from webframework.extension.util.common_utils import *
+from SeleniumQautorobot import *
 from time import sleep
 
 class Ss_sidebar(CommonUtils):
@@ -54,7 +54,7 @@ class Ss_sidebar(CommonUtils):
         Verify sidebar title is visible on the page
         
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.wait_until_element_is_visible`, *self.SERVER_INFO_SECURITY*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.wait_until_element_is_visible`, *self.SERVER_INFO_SECURITY*
         """
         self.wait_until_element_is_visible(self.SERVER_INFO_SECURITY)
 
@@ -63,7 +63,7 @@ class Ss_sidebar(CommonUtils):
         Click sidebar link to open keys and certificates view
 
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.DATA_NAME_KEYS_AND_CERTIFICATES*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.DATA_NAME_KEYS_AND_CERTIFICATES*
         """
         self.click_element(self.DATA_NAME_KEYS_AND_CERTIFICATES)
 
@@ -72,7 +72,7 @@ class Ss_sidebar(CommonUtils):
         Click sidebar link to open system parameters view
 
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.DATA_NAME_SYSPARAMS_SYSTEM_PARAMETERS*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.DATA_NAME_SYSPARAMS_SYSTEM_PARAMETERS*
         """
         self.click_element(self.DATA_NAME_SYSPARAMS_SYSTEM_PARAMETERS)
 
@@ -81,7 +81,7 @@ class Ss_sidebar(CommonUtils):
         Click sidebar link to open server clients view
         
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.DATA_NAME_CLIENTS_SECURITY_SERVER*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.DATA_NAME_CLIENTS_SECURITY_SERVER*
         """
         self.click_element(self.DATA_NAME_CLIENTS_SECURITY_SERVER)
 
@@ -90,7 +90,7 @@ class Ss_sidebar(CommonUtils):
         Click sidebar link to open backups view
 
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.DATA_NAME_BACKUP_BACK_UP_AND_RESTORE*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.DATA_NAME_BACKUP_BACK_UP_AND_RESTORE*
         """
         self.click_element(self.DATA_NAME_BACKUP_BACK_UP_AND_RESTORE)
 
@@ -99,7 +99,7 @@ class Ss_sidebar(CommonUtils):
         Click sidebar link to open diagnostics view
         
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.DATA_NAME_DIAGNOSTICS*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.DATA_NAME_DIAGNOSTICS*
         """
         self.click_element(self.DATA_NAME_DIAGNOSTICS)
 
@@ -108,6 +108,6 @@ class Ss_sidebar(CommonUtils):
         Click sidebar link to open version view
         
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.DATA_NAME_ABOUT_VERSION*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.DATA_NAME_ABOUT_VERSION*
         """
         self.click_element(self.DATA_NAME_ABOUT_VERSION)

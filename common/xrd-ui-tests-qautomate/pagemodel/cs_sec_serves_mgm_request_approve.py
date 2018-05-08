@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Example for using WebDriver object: driver = get_driver() e.g driver.current_url
-from webframework import TESTDATA
+from extension import TESTDATA
 from selenium.webdriver.common.by import By
-from webframework.extension.util.common_utils import *
+from SeleniumQautorobot import *
 from time import sleep
 
 class Cs_sec_serves_mgm_request_approve(CommonUtils):
@@ -66,6 +66,6 @@ class Cs_sec_serves_mgm_request_approve(CommonUtils):
         Click button to approve requests
 
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.BUTTON_APPROVE*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.BUTTON_APPROVE*
         """
         self.click_element(self.BUTTON_APPROVE)

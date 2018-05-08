@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Example for using WebDriver object: driver = get_driver() e.g driver.current_url
-from webframework import TESTDATA
+from extension import TESTDATA
 from selenium.webdriver.common.by import By
-from webframework.extension.util.common_utils import *
+from SeleniumQautorobot import *
 from time import sleep
 
 class Cs_member_details_owned_servers(CommonUtils):
@@ -60,7 +60,7 @@ class Cs_member_details_owned_servers(CommonUtils):
         Click button to add owned server
         
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.BUTTON_ADD*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.BUTTON_ADD*
         """
         # AutoGen method
         self.click_element(self.BUTTON_ADD)
@@ -72,6 +72,6 @@ class Cs_member_details_owned_servers(CommonUtils):
         :param parameters:  Test data section dictionary
         
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *(By.LINK_TEXT*, *parameters[u'security_server_code']*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *(By.LINK_TEXT*, *parameters[u'security_server_code']*
         """
         self.click_element((By.LINK_TEXT, parameters[u'security_server_code']))

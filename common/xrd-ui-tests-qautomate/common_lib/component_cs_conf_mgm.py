@@ -3,9 +3,9 @@ import glob
 import os
 
 from variables import strings
-from webframework import TESTDATA
+from extension import TESTDATA
 from selenium.webdriver.common.by import By
-from webframework.extension.util.common_utils import *
+from SeleniumQautorobot import *
 from time import sleep
 from pagemodel.cs_conf_mgm_external import Cs_conf_mgm_external
 from pagemodel.cs_conf_mgm import Cs_conf_mgm

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Example for using WebDriver object: driver = get_driver() e.g driver.current_url
-from webframework import TESTDATA
+from extension import TESTDATA
 from selenium.webdriver.common.by import By
-from webframework.extension.util.common_utils import *
+from SeleniumQautorobot import *
 from time import sleep
 
 class Cs_sec_servers_mgm_requests(CommonUtils):
@@ -59,7 +59,7 @@ class Cs_sec_servers_mgm_requests(CommonUtils):
         Click management request in table with value "SUBMITTED FOR APPROVAL"
         
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.wait_until_jquery_ajax_loaded`
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.wait_until_jquery_ajax_loaded`
         """
         self.wait_until_jquery_ajax_loaded()
         element_rowtable = self.get_table_column_and_row_by_text(self.ID_SECURITYSERVER_MANAGEMENT_REQUESTS,"SUBMITTED FOR APPROVAL","TBODY/TR","TD")
@@ -73,6 +73,6 @@ class Cs_sec_servers_mgm_requests(CommonUtils):
         Click button to close the dialog
 
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.BUTTON_CLOSE*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.BUTTON_CLOSE*
         """
         self.click_element(self.BUTTON_CLOSE)

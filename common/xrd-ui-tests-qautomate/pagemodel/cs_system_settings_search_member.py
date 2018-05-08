@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Example for using WebDriver object: driver = get_driver() e.g driver.current_url
-from webframework import TESTDATA
+from extension import TESTDATA
 from selenium.webdriver.common.by import By
-from webframework.extension.util.common_utils import *
+from SeleniumQautorobot import *
 from time import sleep
 
 class Cs_system_settings_search_member(CommonUtils):
@@ -60,8 +60,8 @@ class Cs_system_settings_search_member(CommonUtils):
         :param parameters:  Test data section dictionary
         
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.wait_until_page_contains`, *parameters[u'member_name']*
-            * **Step 2:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *table_element[0]*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.wait_until_page_contains`, *parameters[u'member_name']*
+            * **Step 2:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *table_element[0]*
         """
         self.wait_until_page_contains(parameters[u'member_name'])
         table_element = self.get_table_column_and_row_by_text_contains((By.ID, 'member_search'), parameters['member_name'], row='TBODY/TR', cell='TD')
@@ -72,7 +72,7 @@ class Cs_system_settings_search_member(CommonUtils):
         Wait until type element is visible on the page
 
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.wait_until_element_is_visible`, *self.TYPE*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.wait_until_element_is_visible`, *self.TYPE*
         """
         self.wait_until_element_is_visible(self.TYPE)
 
@@ -81,6 +81,6 @@ class Cs_system_settings_search_member(CommonUtils):
         Click element to select member
 
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.BUTTON_SELECT*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.BUTTON_SELECT*
         """
         self.click_element(self.BUTTON_SELECT)

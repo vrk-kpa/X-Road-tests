@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Example for using WebDriver object: driver = get_driver() e.g driver.current_url
-from webframework import TESTDATA
+from extension import TESTDATA
 from selenium.webdriver.common.by import By
-from webframework.extension.util.common_utils import *
+from SeleniumQautorobot import *
 from time import sleep
 
 class Ss_initial_conf_import_conf_dlg(CommonUtils):
@@ -55,7 +55,7 @@ class Ss_initial_conf_import_conf_dlg(CommonUtils):
         Click button to confirm dialog
         
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.click_element`, *self.BUTTON_CONFIRM*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.click_element`, *self.BUTTON_CONFIRM*
         """
         # AutoGen method
         self.click_element(self.BUTTON_CONFIRM)
@@ -65,6 +65,6 @@ class Ss_initial_conf_import_conf_dlg(CommonUtils):
         Wait until view is visible
 
         **Test steps:**
-            * **Step 1:** :func:`~webframework.extension.util.common_utils.CommonUtils.wait_until_element_is_visible`, *self.TITLE*
+            * **Step 1:** :func:`~extension.extension.util.common_utils.CommonUtils.wait_until_element_is_visible`, *self.TITLE*
         """
         self.wait_until_element_is_visible(self.TITLE)

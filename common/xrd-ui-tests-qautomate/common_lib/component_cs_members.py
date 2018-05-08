@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-from webframework import TESTDATA
+from extension import TESTDATA
 from selenium.webdriver.common.by import By
-from webframework.extension.util.common_utils import *
+from SeleniumQautorobot import *
 from time import sleep
 import os
 from common_lib import Common_lib
