@@ -1,4 +1,7 @@
 *** Settings ***
+Documentation    Xroad cases for central management test cases \n\n
+...              See [https://github.com/vrk-kpa/X-Road/blob/develop/doc/UseCases/uc-cs_x-road_use_case_model_for_central_server_management_1.2_Y-883-6.md|use cases]  for more information
+
 
 Suite Setup     Test suite setup
 Suite Teardown  Test suite teardown

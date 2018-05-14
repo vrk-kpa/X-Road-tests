@@ -16,6 +16,9 @@ class XroadAddCsMember(unittest.TestCase):
     X-Road version: 6.16.0
     """
 
+    def __init__(self, methodName='test_a_xroad_add_cs_member'):
+        unittest.TestCase.__init__(self, methodName)
+
     def test_a_xroad_add_cs_member(self):
         main = MainController(self)
         cs_host = main.config.get('cs.host')

@@ -1,4 +1,7 @@
 *** Settings ***
+Documentation    Xroad cases for global configurations \n\n
+...              See [https://github.com/ria-ee/X-Road/blob/develop/doc/UseCases/uc-gconf_x-road_use_case_model_for_global_configuration_distribution_1.4_Y-883-8.md|use cases]  for more information
+
 
 Suite Setup     Test suite setup
 Suite Teardown  Test suite teardown
@@ -44,8 +47,6 @@ ${False}=  False
 
 *** Test Cases ***
 Test global configuration view source
-| | [Documentation]
-| | ... | Use cases: https://github.com/ria-ee/X-Road/blob/develop/doc/UseCases/uc-gconf_x-road_use_case_model_for_global_configuration_distribution_1.4_Y-883-8.md
     # Step Login to central server and open configuration view
     Cs login  section=${cs_url}
     Cs sidebar open global configuration view
@@ -60,8 +61,6 @@ Test global configuration view source
     Log out
 
 Test global configuration download and recreate
-| | [Documentation]
-| | ... | Use cases: https://github.com/ria-ee/X-Road/blob/develop/doc/UseCases/uc-gconf_x-road_use_case_model_for_global_configuration_distribution_1.4_Y-883-8.md
     # Step Login to central server and open configuration view
     Cs login  section=${cs_url}
     Cs sidebar open global configuration view
@@ -76,8 +75,6 @@ Test global configuration download and recreate
     Log out
 
 Test optional conf parts
-| | [Documentation]
-| | ... | Use cases: https://github.com/ria-ee/X-Road/blob/develop/doc/UseCases/uc-gconf_x-road_use_case_model_for_global_configuration_distribution_1.4_Y-883-8.md
     # Step Login to central server and open configuration view
     Cs login  section=${cs_url}
     Cs sidebar open global configuration view
@@ -109,8 +106,6 @@ Test optional conf parts
     Log out
 
 Test login and log out software security token
-| | [Documentation]
-| | ... | Use cases: https://github.com/ria-ee/X-Road/blob/develop/doc/UseCases/uc-gconf_x-road_use_case_model_for_global_configuration_distribution_1.4_Y-883-8.md
     # Step Login to central server and open configuration view
     Cs login  section=${cs_url}
     Cs sidebar open global configuration view
@@ -133,8 +128,6 @@ Test login and log out software security token
     Log out
 
 Test activate and delete config signing key
-| | [Documentation]
-| | ... | Use cases: https://github.com/ria-ee/X-Road/blob/develop/doc/UseCases/uc-gconf_x-road_use_case_model_for_global_configuration_distribution_1.4_Y-883-8.md
     # Step Login to central server and open configuration view
     Cs login  section=${cs_url}
     Cs sidebar open global configuration view
@@ -172,8 +165,6 @@ Test activate and delete config signing key
     Log out
 
 Test view sys param and edit address of cs
-| | [Documentation]
-| | ... | Use cases: https://github.com/ria-ee/X-Road/blob/develop/doc/UseCases/uc-gconf_x-road_use_case_model_for_global_configuration_distribution_1.4_Y-883-8.md
     # Step Login to central server and open system settings
     Cs login  section=${cs_url}
     Cs sidebar open system settings view
@@ -226,8 +217,6 @@ Test view sys param and edit address of cs
     Log out
 
 Test generate configuration
-| | [Documentation]
-| | ... | Use cases: https://github.com/ria-ee/X-Road/blob/develop/doc/UseCases/uc-gconf_x-road_use_case_model_for_global_configuration_distribution_1.4_Y-883-8.md
     # Step Verify if V2 folder exists in server
     Ssh verify if server contains directory  ${cs_url}  ${v2_path}
 
@@ -276,8 +265,6 @@ Test generate configuration
     Log out
 
 Test handle configuration download request
-| | [Documentation]
-| | ... | Use cases: https://github.com/ria-ee/X-Road/blob/develop/doc/UseCases/uc-gconf_x-road_use_case_model_for_global_configuration_distribution_1.4_Y-883-8.md
     # Step Test internalconf url download
     ${internal_conf_url_parameter}=  Get parameter  ${cs_url}  ${internal_conf_url}
     log  ${internal_conf_url_parameter}

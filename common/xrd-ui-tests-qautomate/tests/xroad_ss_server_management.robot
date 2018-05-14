@@ -1,4 +1,6 @@
 *** Settings ***
+Documentation    Xroad cases for security server management test cases \n\n
+...              See [https://github.com/ria-ee/X-Road/blob/develop/doc/UseCases/uc-ss_x-road_use_case_model_for_security_server_management_1.4_Y-883-4.md|use cases] for more information
 
 Suite Setup     Test suite setup
 Suite Teardown  Test suite teardown
@@ -34,6 +36,7 @@ ${False}=  False
 
 *** Test Cases ***
 Test login and logout ss gui
+
     # Step Open security server for login add user name password
     # Step System verify's login success and log file
     Ss login  ${ss1_url}
