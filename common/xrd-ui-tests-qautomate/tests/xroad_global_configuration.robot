@@ -8,7 +8,7 @@ Suite Teardown  Test suite teardown
 Test Setup      setup
 Test Teardown   teardown
 
-Library     QautoRobot  ${TESTDATA}
+Library     QautoRobot  testdata=${TESTDATA}
 
 
 *** Variables ***

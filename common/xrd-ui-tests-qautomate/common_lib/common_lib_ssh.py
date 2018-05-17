@@ -6,7 +6,6 @@ from SeleniumQautorobot import *
 from extension.config import get_config_value
 from FileOperations import get_file_content
 from time import sleep
-from logging import warn
 
 class Common_lib_ssh(CommonUtils):
     """
@@ -288,13 +287,13 @@ class Common_lib_ssh(CommonUtils):
         if not event == newest_log["event"]:
             log_file_tail = self.parse_log_file_tail(log_output)
             if event in log_file_tail:
-                warn("newest log event is not {}, but found in file\n".format(newest_log["event"]) + log_file_tail)
+                self.warning("newest log event is not {}, but found in file\n".format(newest_log["event"]) + log_file_tail)
             else:
                 self.fail(errors.log_event_fail(event) + "\n" + log_file_tail)
         if not user == newest_log["user"]:
             log_file_tail = self.parse_log_file_tail(log_output)
             if event in log_file_tail:
-                warn("newest log user is not {}, but found in file\n".format(newest_log["user"]) + log_file_tail)
+                self.warning("newest log user is not {}, but found in file\n".format(newest_log["user"]) + log_file_tail)
             else:
                 self.fail(errors.log_user_fail(user) + "\n" + log_file_tail)
 

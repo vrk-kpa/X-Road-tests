@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import subprocess
+import os
 from extension import TESTDATA
 import glob
 from urlparse import urlparse
