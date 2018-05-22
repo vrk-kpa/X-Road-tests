@@ -99,7 +99,6 @@ Library     tests.xroad_ss_client_certification_213.XroadSecurityServerClientKey
 
 
 *** Variables ***
-# ${TestData}=  ../xrd-ui-tests-qautomate/data/lxd_parameters/common_servers.xml
 
 *** Test Cases ***
 
@@ -173,7 +172,7 @@ Test add to acl
     tests.xroad_add_to_acl_218.XroadAddToAcl.Test add to acl
 
 Test acl
-    tests.xroad_add_to_acl_from_client_219.XroadAddToAclFromClien.Test acl
+    tests.xroad_add_to_acl_from_client_219.XroadAddToAclFromClient.Test acl
 
 Test add client extensions
     tests.xroad_cs_add_client_to_member.XroadAddClientToMemberExtensions.Test add client extensions
@@ -240,7 +239,7 @@ Test view key details SS 21
 Test view token details SS 20
     tests.xroad_tokens_keys_certs.XroadTokenDetails.Test view token details SS 20
 
-Test view key details SS 21
+Test view key details SS 21 2
     tests.xroad_tokens_keys_certs.XroadViewKeyDetails.Test view key details SS 21
 
 Test view list tokens keys certs SS 19
@@ -297,7 +296,7 @@ Test view management service
 Test edit management service
     tests.xroad_cs_edit_management_service.XroadEditManagementService.Test edit management service
 
-Test xroad logout token
+Test xroad logout token 2
     tests.xroad_ss_service_local_groups_view.XroadSsServiceLocalGroupsView.Test xroad logout token
 
 Test xroad local groups view details
@@ -371,7 +370,7 @@ Test xroad view details
 Test xroad view approved cert
     tests.xroad_trust_view_approved_certification_services.XroadTrustViewApprovedCertService.Test xroad view approved cert
 
-Test xroad verify ts
+Test xroad verify ts 2
     tests.xroad_cs_view_xroad_members.XroadViewCSMembers.Test xroad verify ts
 
 #Test decline registration request
@@ -386,7 +385,7 @@ Test xroad configure service 3
     tests.xroad_configure_service_222.XroadDeleteService.Test xroad configure service
 
 Test xroad configure service 4
-    tests.xroad_configure_service_222.XroadDownloadParseURLtest_xroad_configure_service.Test xroad configure service
+    tests.xroad_configure_service_222.XroadDownloadParseURL.Test xroad configure service
 
 #Test a xroad unregister client request fail
 #    tests.xroad_ss_unregister_client.XroadUnregisterClient.Test a xroad unregister client request fail
