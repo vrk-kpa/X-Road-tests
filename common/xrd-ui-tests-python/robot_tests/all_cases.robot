@@ -10,7 +10,6 @@ Library     QautoRobot  ${None}
 Library     tests.xroad_cs_add_member.XroadAddCsMember
 Library     tests.xroad_ss_add_subsystem_as_client.XroadAddSubsystemAsClient
 Library     tests.xroad_ss_client.XroadRegisterClient
-Library     tests.xroad_ss_certificates.XroadCertifyClient
 Library     tests.xroad_cs_add_client_to_member.XroadAddClientToMember
 Library     tests.xroad_cs_approve_requests.XroadApproveRequests
 Library     tests.xroad_configure_service_222.XroadAddWsdlSecurityServerClient
@@ -18,14 +17,11 @@ Library     tests.xroad_configure_service_222.XroadEnableWSDL
 Library     tests.xroad_configure_service_222.XroadViewWSDL
 Library     tests.xroad_configure_service_222.XroadViewService
 Library     tests.xroad_configure_service_222.XroadEditAddressWSDL
-Library     tests.xroad_add_central_service_228.XroadAddCentralService
 Library     tests.xroad_cs_view_central_services.XroadViewCentralService
-Library     tests.xroad_add_central_service_228.XroadDeleteCentralService
 Library     tests.xroad_global_groups_tests.XroadGlobalGroups
 Library     tests.xroad_global_groups_tests.XroadViewGlobalGroups
 Library     tests.xroad_global_groups_tests.XroadViewGlobalGroupDetails
 Library     tests.xroad_global_groups_tests.XroadEditGlobalGroupDescription
-Library     tests.xroad_global_groups_tests.XroadRemoveFromGlobalGroup
 Library     tests.xroad_global_groups_tests.XroadMemberAddToGlobalGroup
 Library     tests.xroad_global_groups_tests.XroadMemberRemoveFromGlobalGroup
 Library     tests.xroad_add_to_acl_218.XroadAddToAcl
@@ -64,8 +60,6 @@ Library     tests.xroad_cs_view_management_service.XroadViewManagementService
 Library     tests.xroad_cs_edit_management_service.XroadEditManagementService
 Library     tests.xroad_ss_service_local_groups_view.XroadSsServiceLocalGroupsView
 Library     tests.xroad_ss_service_local_groups_view_details.XroadSsServiceLocalGroupsViewDetails
-Library     tests.xroad_local_group.XroadRemoveLocalGroupMembers
-Library     tests.xroad_local_group.XroadEditDescriptionLocalGroup
 Library     tests.xroad_cs_ca.XroadAddCa
 Library     tests.xroad_cs_ca.XroadEditCa
 Library     tests.xroad_cs_ca.XroadDeleteCa
@@ -87,15 +81,8 @@ Library     tests.xroad_trust_view_details_cs_ca_certificate.XroadTrustViewDetai
 Library     tests.xroad_trust_view_details_cs_ca.XroadTrustViewDetailsCsCa
 Library     tests.xroad_trust_view_approved_certification_services.XroadTrustViewApprovedCertService
 Library     tests.xroad_cs_view_xroad_members.XroadViewCSMembers
-Library     tests.xroad_decline_registration_request.XroadDeclineRegistrationRequest
-Library     tests.xroad_ss_client_certification_213.XroadSecurityServerSignerErrors
-Library     tests.xroad_ss_client_certification_213.XroadSecurityServerCertImportGlobalConfExpired
 Library     tests.xroad_configure_service_222.XroadDeleteService
 Library     tests.xroad_configure_service_222.XroadDownloadParseURL
-Library     tests.xroad_ss_unregister_client.XroadUnregisterClient
-Library     tests.xroad_cs_delete_member.XroadCsDeleteMember
-Library     tests.xroad_ss_delete_client.XroadDeleteClient
-Library     tests.xroad_ss_client_certification_213.XroadSecurityServerClientKeyDeletion
 
 
 *** Variables ***
@@ -109,10 +96,10 @@ Test b xroad add cs existing member
     tests.xroad_cs_add_member.XroadAddCsMember.Test b xroad add cs existing member
 
 Test a add subsystem as client
-    tests.xroad_ss_add_subsystem_as_client.XroadAddSubsystemAsClient.Test c add client input errors
+    tests.xroad_ss_add_subsystem_as_client.XroadAddSubsystemAsClient.Test a add subsystem as client
 
 Test b add subsystem as client by hand
-    tests.xroad_ss_add_subsystem_as_client.XroadAddSubsystemAsClient.Test c add client input errors
+    tests.xroad_ss_add_subsystem_as_client.XroadAddSubsystemAsClient.Test b add subsystem as client by hand
 
 Test c add client input errors
     tests.xroad_ss_add_subsystem_as_client.XroadAddSubsystemAsClient.Test c add client input errors
@@ -144,9 +131,6 @@ Test xroad configure service 2
 Test view central service
     tests.xroad_cs_view_central_services.XroadViewCentralService.Test view central service
 
-Test add central service 2 2 8
-    tests.xroad_add_central_service_228.XroadDeleteCentralService.Test add central service 2 2 8
-
 Test global groups tests
     tests.xroad_global_groups_tests.XroadGlobalGroups.Test global groups tests
 
@@ -158,9 +142,6 @@ Test view global group details
 
 Test edit global group description
     tests.xroad_global_groups_tests.XroadEditGlobalGroupDescription.Test edit global group description
-
-#Test a remove selected from global group
-#    tests.xroad_global_groups_tests.XroadRemoveFromGlobalGroup.Test a remove selected from global group
 
 Test member add to global group
     tests.xroad_global_groups_tests.XroadMemberAddToGlobalGroup.Test member add to global group
@@ -302,12 +283,6 @@ Test xroad logout token 2
 Test xroad local groups view details
     tests.xroad_ss_service_local_groups_view_details.XroadSsServiceLocalGroupsViewDetails.Test xroad local groups view details
 
-#Test add sub to member
-#    tests.xroad_local_group.XroadRemoveLocalGroupMembers.Test add sub to member
-
-#Test add sub to member 2
-#    tests.xroad_local_group.XroadEditDescriptionLocalGroup.Test add sub to member
-
 Test xroad add ca
     tests.xroad_cs_ca.XroadAddCa.Test xroad add ca
 
@@ -373,40 +348,12 @@ Test xroad view approved cert
 Test xroad verify ts 2
     tests.xroad_cs_view_xroad_members.XroadViewCSMembers.Test xroad verify ts
 
-#Test decline registration request
-#    tests.xroad_decline_registration_request.XroadDeclineRegistrationRequest.Test decline registration request
-
-#Library     tests.xroad_ss_client_certification_213.XroadSecurityServerSignerErrors
-
-#Test securityServerGlobalConfExpired
-#    tests.xroad_ss_client_certification_213.XroadSecurityServerCertImportGlobalConfExpired.Test securityServerGlobalConfExpired
-
 Test xroad configure service 3
     tests.xroad_configure_service_222.XroadDeleteService.Test xroad configure service
 
 Test xroad configure service 4
     tests.xroad_configure_service_222.XroadDownloadParseURL.Test xroad configure service
 
-#Test a xroad unregister client request fail
-#    tests.xroad_ss_unregister_client.XroadUnregisterClient.Test a xroad unregister client request fail
-
-#Test b xroad unregister client
-#    tests.xroad_ss_unregister_client.XroadUnregisterClient.Test a xroad unregister client request fail
-
-#Test a delete member
-#    tests.xroad_cs_delete_member.XroadCsDeleteMember.Test a delete member
-
-#Test b xroad cs delete member with subsystem
-#    tests.xroad_cs_delete_member.XroadCsDeleteMember.Test b xroad cs delete member with subsystem
-
-#Test c xroad cs delete member with global group
-#    tests.xroad_cs_delete_member.XroadCsDeleteMember.Test c xroad cs delete member with global group
-
-#Test delete client
-#    tests.xroad_ss_delete_client.XroadDeleteClient.Test delete client
-
-Test security server key deletion
-    tests.xroad_ss_client_certification_213.XroadSecurityServerClientKeyDeletion.Test security server key deletion
 
 *** Keywords ***
 setup
