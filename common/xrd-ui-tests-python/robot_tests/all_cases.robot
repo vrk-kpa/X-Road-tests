@@ -158,7 +158,8 @@ Test acl
 Test add client extensions
     tests.xroad_cs_add_client_to_member.XroadAddClientToMemberExtensions.Test add client extensions
 
-#Library     tests.xroad_cs_revoke_requests.XroadRevokeRequests
+Test xroad revoke requests
+    tests.xroad_cs_revoke_requests.XroadRevokeRequests.Test xroad revoke requests
 
 Test ss user logging
     tests.xroad_ss_user_logging.XroadSSUserLogging.Test ss user logging
@@ -313,7 +314,8 @@ Test xroad intermediate ca deleting
 Test xroad intermediate ca deleting 2
     tests.xroad_cs_intermediate_ca.XroadViewIntermediateCADetails.Test xroad intermediate ca deleting
 
-#Library     tests.xroad_cs_intermediate_ca.XroadDeleteIntermediateCA
+Test xroad intermediate ca deleting 3
+    tests.xroad_cs_intermediate_ca.XroadDeleteIntermediateCA.Test xroad intermediate ca deleting
 
 Test xroad delete ts
     tests.xroad_view_approved_timestamping_services.XroadDeleteTS.Test xroad delete ts
