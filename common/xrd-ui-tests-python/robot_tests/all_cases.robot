@@ -159,7 +159,7 @@ Test add client extensions
     tests.xroad_cs_add_client_to_member.XroadAddClientToMemberExtensions.Test add client extensions
 
 Test xroad revoke requests
-    tests.xroad_cs_revoke_requests.XroadRevokeRequests.Test xroad revoke requests
+    tests.xroad_cs_revoke_requests.XroadRevokeRequests.Revoke Requests
 
 Test ss user logging
     tests.xroad_ss_user_logging.XroadSSUserLogging.Test ss user logging
