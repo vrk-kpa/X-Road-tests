@@ -5,7 +5,7 @@ from main.maincontroller import MainController
 from tests.xroad_cs_revoke_requests.revoke_requests import revoke_requests
 
 
-class XroadRevokeRequest(unittest.TestCase):
+class XroadRevokeRequests(unittest.TestCase):
     """
     MEMBER_39 Revoke a Registration Request
     RIA URL: https://jira.ria.ee/browse/XT-391
